@@ -1,0 +1,25 @@
+{
+  "button": [
+    {
+      "type": "click",
+      "name": "菜单1"
+    },
+    {
+      "type": "click",
+      "name": "菜单2"
+    },
+    {
+      "name": "菜单3",
+      "sub_button": [
+        {
+          "type": "view",
+          "name": "子菜单1"
+        },
+        {
+          "type": "click",
+          "name": "子菜单2"
+        }
+      ]
+    }
+  ]
+}
