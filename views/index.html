@@ -1,0 +1,139 @@
+<!--基于jquery的板材定制项目-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>登录</title>
+  <meta name="viewport" content="width = device-width,initial-scale=1.0">
+  <style>
+    html,body{
+      margin: 0;
+      padding: 0;
+    }
+    .no-border-input{
+      outline-color: invert ;
+      outline-style: none ;
+      outline-width: 0px ;
+      border: none ;
+      border-style: none ;
+      text-shadow: none ;
+      -webkit-appearance: none ;
+      -webkit-user-select: text ;
+      outline-color: transparent ;
+      box-shadow: none;
+    }
+  </style>
+  <style>
+    .login-bg{
+      width: 100%;
+    }
+    .login-content{
+      padding: 30px 40px;
+    }
+    .user-content{
+      position: relative;
+      height: 50px;
+    }
+    .user-icon{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .user-text{
+      position: absolute;
+      top: 8px;
+      left: 50px;
+    }
+    .phone-content{
+      position: relative;
+      height: 50px;
+    }
+    .phone-icon{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .phone-text{
+      position: absolute;
+      top: 8px;
+      left: 50px;
+    }
+    .line{
+      width: 100%;
+      height: 1px;
+      background-color: #eeeeee;
+      margin-bottom: 15px;
+    }
+    .login-button{
+      width: 100%;
+      height: 40px;
+      border-radius: 8px;
+      background-image: linear-gradient(to right,#54c5ff,#90daff);
+      /*background-color: #54c5ff;*/
+      text-align: center;
+      line-height: 40px;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body id="main">
+<img src="/images/order/login-bg.png" alt="" class="login-bg">
+<div class="login-content">
+  <div class="user-content">
+    <img src="/images/order/user-icon.png" alt="" width="35px" class="user-icon">
+    <input type="text" class="user-text no-border-input" placeholder="请输入姓名" id="user">
+  </div>
+  <div class="line"></div>
+  <div class="phone-content">
+    <img src="/images/order/phone-icon.png" alt="" width="35px" class="phone-icon">
+    <input type="text" class="phone-text no-border-input" placeholder="请输入电话号码" id="phone">
+  </div>
+  <div class="line"></div>
+  <div class="login-button" onclick="submit()">提交</div>
+</div>
+</body>
+<!--<script src="../../static/js/jquery.js"></script>-->
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="/javascripts/toast.js"></script>
+<script>
+  $(document).ready(function () {
+
+  })
+  function submit() {
+    // 测试弹窗
+    toast('main','成功')
+
+    //将用户名，手机号传递给后端，并跳转到填写定制内容页面
+    // if($("#user").val() == undefined || $("#user").val() == null || $("#phone").val() == null || $("#phone").val() == undefined){
+    //   alert('请输入姓名和手机号')
+    //   return
+    // }
+
+    // var data = {
+    //   userName:$('#user').val(),
+    //   userPhone:$('#phone').val()
+    // }
+    //ajax请求
+    // $.ajax({
+    //   // url:'/orderLogin',
+    //   url:'/api/order/login',
+    //   // url:'/api/login',
+    //   type:'post',
+    //   data: data,
+    //   success: function (data, status) {
+    //     console.log('走成功')
+    //     // 如果成功，弹出弹窗，提示成功
+    //     // 写成一个函数组件
+    //   },
+    //   error: function (data,status) {
+    //     console.log('走失败')
+    //   //  如果失败，弹出弹窗，提示失败
+    //   //  写成一个函数组件 ，全局调用
+    //   }
+    // })
+    //将信息传递给后端,跳转到填写页面
+    // window.location.href='./order.html'
+    // window.location.href='/html/order.html'
+  }
+</script>
+</html>

@@ -10,6 +10,8 @@ var xmlparser = require('express-xml-bodyparser');
 
 //引入获取access_token函数
 var getAccessToken = require('./getAccessToken.js');
+//引入获取ticket函数
+var getTicket = require('./getTicket.js');
 
 //引入createMenu函数
 var createMenu = require('./createMenu.js')
@@ -84,6 +86,14 @@ router.post('/',xmlparser({trim: false, explicitArray: false}), function (req,re
 // console.log("调用getaccess函数");
 // getAccessToken()
 // console.log("调用getaccess结束");
+
+// 获取ticket
+console.log('调用getTicket函数')
+getTicket()
+console.log('调用getTicket函数结束')
+
+
+
 
 
 //写入文件测试

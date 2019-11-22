@@ -6,7 +6,7 @@ var jsonParse = bodyParser.json();
 var urlEncodeParse = bodyParser.urlencoded({extended: false});
 
 router.post('/',jsonParse,function (req,res,next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:80');
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:80');
     console.log(req.body);
     res.send("请求login接口");
 })

@@ -6,8 +6,8 @@ var fs = require('fs');
 function  accessToken() {
     //调用微信接口
     console.log("开始执行");
-    var appID = 'wx0124de280cc9cf5d';
-    var appscreat = 'f2d93736518bd12eb07b24d1e26b85bf';
+    var appID = 'wxab8b04c7dd67b197';
+    var appscreat = 'b38b72dbe24ad50b7f9b361f92190dc1';
     var url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+appID+'&secret='+appscreat;
     console.log("开始请求");
     request(url,function (error,response,body) {
