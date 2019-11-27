@@ -30,15 +30,11 @@
     }
     select{
       padding-right: 1.8rem;
-      /*color: #afbac0;*/
-      /*font-size: 1.6rem;*/
       border: none;
       outline: none;
-      /*去掉默认的下拉三角*/
       appearance:none;
       -moz-appearance:none;
       -webkit-appearance:none;
-      /*添加下拉三角图标*/
     }
   </style>
   <style>
@@ -79,11 +75,10 @@
       margin-top: 30px;
       height: 100px;
       overflow: scroll;
-      /*color: #ffffff;*/
     }
   </style>
 </head>
-<body>
+<body id="main">
   <div class="order-content">
     <div class="order-content-bg">
       <div class="flex-center">
@@ -93,33 +88,34 @@
       <div class="line"></div>
       <div>
         <span>宽 度：</span>
-        <input type="text" placeholder="请填写宽度">
+        <input type="text" placeholder="请填写宽度" id="panelWidth">
       </div>
       <div class="line"></div>
       <div>
         <span>长 度：</span>
-        <input type="text" placeholder="请填写长度">
+        <input type="text" placeholder="请填写长度" id="panelHeight">
       </div>
       <div class="line"></div>
       <div>
         <span>厚 度：</span>
-        <input type="text" placeholder="请填写厚度">
+        <input type="text" placeholder="请填写厚度" id="panelThickness">
       </div>
       <div class="line"></div>
       <div>
         <span>类 型：</span>
-        <select name="" id="">
-          <option value="">请选择板子类型</option>
-          <option value="">纯面板</option>
-          <option value="">补板</option>
-          <option value="">大洞板</option>
-          <option value="">小洞板</option>
+        <select name="" id="category">
+          <option value="0">请选择板子类型</option>
+          <option value="纯面板">纯面板</option>
+          <option value="补板">补板</option>
+          <option value="大洞板">大洞板</option>
+          <option value="小洞板">小洞板</option>
         </select>
       </div>
 
-      <div class="submit-button">提交</div>
+      <div class="submit-button" onclick="sendOrderInfo()">提交</div>
     </div>
 
+    <!--轮播滚动-->
     <div class="srcoll-info">
       <div>189xxxx1812已订购面板</div>
       <div>189xxxx1812已订购面板</div>
@@ -133,4 +129,48 @@
   </div>
   <img src="../images/order/order-foot.png" alt="" class="foot-img">
 </body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../javascripts/toast.js"></script>
+<script>
+  var userPhone
+  $(document).ready(function () {
+    userPhone = getQueryString('userPhone')
+  });
+
+  function getQueryString(name){
+    if(window.location.search.indexOf('?')!=-1){
+      let str = window.location.search.substring(1)
+      let arr = str.split('&')
+      let obj = {}
+      var i;
+      for (i=0;i<arr.length;i++){
+        obj[arr[i].split('=')[0]] = arr[i].split('=')[1]
+      }
+      return obj[name]
+    }
+  }
+
+  function sendOrderInfo() {
+    var data = {
+      userPhone:userPhone,
+      panelWidth:$('#panelWidth').val(),
+      panelHeight:$('#panelHeight').val(),
+      panelThickness:$('#panelThickness').val(),
+      category:$('#category option:selected').val()
+    }
+    console.log('打印获取到的信息')
+    console.log(data)
+    $.ajax({
+      url:'/api/order/info',
+      data:data,
+      method:'post',
+      success: function (data,status) {
+        toast('main','成功')
+      },
+      error: function (data,status) {
+        toast('main','失败')
+      }
+    })
+  }
+</script>
 </html>

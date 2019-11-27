@@ -101,39 +101,32 @@
   })
   function submit() {
     // 测试弹窗
-    toast('main','成功')
+    // toast('main','成功')
 
     //将用户名，手机号传递给后端，并跳转到填写定制内容页面
-    // if($("#user").val() == undefined || $("#user").val() == null || $("#phone").val() == null || $("#phone").val() == undefined){
-    //   alert('请输入姓名和手机号')
-    //   return
-    // }
+    if($("#user").val() == undefined || $("#user").val() == null || $("#phone").val() == null || $("#phone").val() == undefined){
+      alert('请输入姓名和手机号')
+      return
+    }
 
-    // var data = {
-    //   userName:$('#user').val(),
-    //   userPhone:$('#phone').val()
-    // }
-    //ajax请求
-    // $.ajax({
-    //   // url:'/orderLogin',
-    //   url:'/api/order/login',
-    //   // url:'/api/login',
-    //   type:'post',
-    //   data: data,
-    //   success: function (data, status) {
-    //     console.log('走成功')
-    //     // 如果成功，弹出弹窗，提示成功
-    //     // 写成一个函数组件
-    //   },
-    //   error: function (data,status) {
-    //     console.log('走失败')
-    //   //  如果失败，弹出弹窗，提示失败
-    //   //  写成一个函数组件 ，全局调用
-    //   }
-    // })
-    //将信息传递给后端,跳转到填写页面
-    // window.location.href='./order.html'
-    // window.location.href='/html/order.html'
+    var data = {
+      userName:$('#user').val(),
+      userPhone:$('#phone').val()
+    }
+    // ajax请求
+    $.ajax({
+      url:'/api/order/login',
+      type:'post',
+      data: data,
+      success: function (data, status) {
+        toast('main','成功');
+        // window.location.href='/html/order.html';
+        window.location.href='/html/order.html?userPhone='+$('#phone').val();
+      },
+      error: function (data,status) {
+        toast('main','失败')
+      }
+    })
   }
 </script>
 </html>

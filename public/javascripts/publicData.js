@@ -1,4 +1,6 @@
-var user = []
+var user = [];
+var order = [];
 module.exports = {
-  userInfo:user
+  userInfo:user,
+  orderInfo:order
 }

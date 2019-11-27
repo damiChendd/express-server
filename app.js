@@ -10,7 +10,9 @@ var wxRouter = require('./routes/wx');
 
 var loginRouter = require('./routes/api/login')
 
-var orderLoginRouter = require("./routes/api/orderProject/orderLogin")
+var orderLoginRouter = require("./routes/api/orderProject/orderLogin");
+var orderInfoRouter = require("./routes/api/orderProject/orderInfo");
+var orderListRouter = require("./routes/api/orderProject/orderList")
 
 var app = express();
 
@@ -18,8 +20,15 @@ var app = express();
 var ejs = require('ejs');
 app.engine('html', ejs.__express);
 app.set('view engine', 'html');
+app.set('views',path.join(__dirname,'views'))
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'hbs');
+
+
+//设置静态的路由(渲染不成功)
+app.get('/order/list',function (req,res) {
+  res.render('orderList.html');
+})
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -36,7 +45,9 @@ app.use('/wx',wxRouter);
 app.use('/api/login',loginRouter);
 
 // 定制项目后台接口
-app.use('/api/order/login',orderLoginRouter)
+app.use('/api/order/login',orderLoginRouter);
+app.use('/api/order/info',orderInfoRouter);
+app.use('/api/order/list',orderListRouter);
 
 
 
